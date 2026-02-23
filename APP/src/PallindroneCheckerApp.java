@@ -1,33 +1,35 @@
-// USE CASE 3
+// USE CASE 4
 import java.util.Scanner;
-
 public class PallindroneCheckerApp {
-    public static void main(String[] args) {
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String s;
+        System.out.println("Welcome to Palindrome Checker App Management System");
+        System.out.println("Enter a string(lower case):");
+        s=sc.nextLine();
 
-        Scanner sc = new Scanner(System.in);
+        char [] chars= s.toCharArray();
 
-        System.out.println("Welcome to Palindrone Checker App Management System");
-        System.out.println("Enter a string (lower case):");
+        int start =0;
+        int end=chars.length - 1;
 
-        String s = sc.nextLine();
-        boolean isPalindrome = true;
+        boolean isPalindrome=true;
 
-        // Loop only till half of the string length
-        for (int i = 0; i < s.length() / 2; i++) {
-
-            // Compare characters from start and end
-            if (s.charAt(i) != s.charAt(s.length() - 1 - i)) {
+        while (start < end) {
+            if (chars[start] != chars[end]) {
                 isPalindrome = false;
                 break;
             }
+            start++;
+            end--;
         }
 
-        if (isPalindrome) {
+        if(isPalindrome){
             System.out.println("Palindrome");
-        } else {
-            System.out.println("Not Palindrome");
         }
-
+        else{
+            System.out.println("Is not a Palindrome");
+        }
         sc.close();
     }
 }
