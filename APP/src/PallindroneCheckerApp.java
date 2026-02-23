@@ -1,35 +1,39 @@
-// USE CASE 4
+// USE CASE 5
 import java.util.Scanner;
+import java.util.Stack;
+
 public class PallindroneCheckerApp {
-    public static void main(String[] args){
-        Scanner sc=new Scanner(System.in);
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         String s;
         System.out.println("Welcome to Palindrome Checker App Management System");
         System.out.println("Enter a string(lower case):");
-        s=sc.nextLine();
+        s = sc.nextLine();
 
-        char [] chars= s.toCharArray();
+        Stack<Character> stack = new Stack<>();
 
-        int start =0;
-        int end=chars.length - 1;
+        // Push each character of the string into the stack
+        for (char c : s.toCharArray()) {
+            stack.push(c);
+        }
 
-        boolean isPalindrome=true;
+        // Assume palindrome initially
+        boolean isPalindrome = true;
 
-        while (start < end) {
-            if (chars[start] != chars[end]) {
+        // Iterate again through original string
+        for (char c : s.toCharArray()) {
+            if (c != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
-            start++;
-            end--;
         }
 
-        if(isPalindrome){
+        if (isPalindrome) {
             System.out.println("Palindrome");
-        }
-        else{
+        } else {
             System.out.println("Is not a Palindrome");
         }
         sc.close();
+
     }
 }
