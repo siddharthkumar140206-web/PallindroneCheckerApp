@@ -1,4 +1,4 @@
-// USE CASE 2
+// USE CASE 3
 import java.util.Scanner;
 
 public class PallindroneCheckerApp {
