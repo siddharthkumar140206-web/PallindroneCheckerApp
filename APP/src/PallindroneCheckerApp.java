@@ -1,4 +1,4 @@
-// USE CASE 5
+// USE CASE 6
 import java.util.Scanner;
 import java.util.Stack;
 
