@@ -1,17 +1,21 @@
-//USE CASE 9
+//USE CASE 10
 import java.util.Scanner;
 
 public class PallindroneCheckerApp {
+
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
-        String s;
+
         System.out.println("Welcome to Palindrome Checker App Management System");
-        System.out.println("Enter a string(lower case):");
-        s = sc.nextLine();
+        System.out.println("Enter a string:");
 
-        s = s.toLowerCase();
+        String input = sc.nextLine();
 
-        boolean result = check(s, 0, s.length() - 1);
+        String normalized = input.toLowerCase().replaceAll("[^a-z0-9]", "");
+
+        boolean result = check(normalized, 0, normalized.length() - 1);
+
 
         System.out.println("Is Palindrome?: " + result);
 
@@ -19,18 +23,12 @@ public class PallindroneCheckerApp {
     }
 
     private static boolean check(String s, int start, int end) {
-
-        // Base case: pointers have crossed or met
         if (start >= end) {
             return true;
         }
-
-        // If characters do not match
         if (s.charAt(start) != s.charAt(end)) {
             return false;
         }
-
-        // Recursive call moving inward
         return check(s, start + 1, end - 1);
     }
 }
