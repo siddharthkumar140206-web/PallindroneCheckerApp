@@ -1,5 +1,7 @@
-//USE CASE 11
+// USE CASE 12
 import java.util.Scanner;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class PallindroneCheckerApp {
 
@@ -7,29 +9,34 @@ public class PallindroneCheckerApp {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Welcome to Palindrome Checker App Management System");
         System.out.println("Enter a string:");
-
         String input = sc.nextLine();
-        String normalized = input.toLowerCase().replaceAll("[^a-z0-9]", "");
-
-        boolean result = PalindromeService.check(normalized, 0, normalized.length() - 1);
+        PalindromeStrategy strategy = new DequeStrategy();
+        boolean result = strategy.check(input);
 
         System.out.println("Is Palindrome?: " + result);
 
         sc.close();
     }
-    class PalindromeService {
+}
+interface PalindromeStrategy {
+    boolean check(String input);
+}
+class DequeStrategy implements PalindromeStrategy {
 
-        public static boolean check(String s, int start, int end) {
+    public boolean check(String input) {
 
-            if (start >= end) {
-                return true;
-            }
-            if (s.charAt(start) != s.charAt(end)) {
+        Deque<Character> deque = new ArrayDeque<>();
+        for (char c : input.toCharArray()) {
+            deque.addLast(c);
+        }
+        while (deque.size() > 1) {
+
+            if (!deque.removeFirst().equals(deque.removeLast())) {
                 return false;
             }
-            return check(s, start + 1, end - 1);
         }
+
+        return true;
     }
 }
