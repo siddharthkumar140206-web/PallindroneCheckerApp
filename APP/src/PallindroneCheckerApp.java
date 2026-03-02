@@ -2,45 +2,36 @@
 import java.util.Scanner;
 import java.util.Stack;
 
-import java.util.Queue;
+import java.util.Scanner;
 import java.util.LinkedList;
 
 public class PallindroneCheckerApp {
+
     public static void main(String[] args) {
 
-        Scanner sc=new Scanner(System.in);
-        String s;
-        System.out.println("Welcome to Palindrome Checker App Management System");
-        System.out.println("Enter a string(lower case):");
-        s=sc.nextLine();
+        Scanner sc = new Scanner(System.in);
 
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack = new Stack<>();
+        System.out.print("Enter a string: ");
+        String s = sc.nextLine();
 
-        // Push each character of the string into the stack
+        LinkedList<Character> list = new LinkedList<>();
+
         for (char c : s.toCharArray()) {
-            queue.add(c);
-            stack.push(c);
+            list.add(c);
         }
 
-        // Assume palindrome initially
         boolean isPalindrome = true;
 
-        // Iterate again through original string
-        while (!queue.isEmpty()) {
-            if (queue.remove() != stack.pop()) {
-
+        while (list.size() > 1) {
+            if (list.removeFirst() != list.removeLast()) {
                 isPalindrome = false;
                 break;
             }
         }
 
-        if(isPalindrome){
-            System.out.println("Palindrome");
-        }
-        else{
-            System.out.println("Is not a Palindrome");
-        }
+        System.out.println("Input : " + s);
+        System.out.println("Is Palindrome? : " + isPalindrome);
+
         sc.close();
     }
 }
