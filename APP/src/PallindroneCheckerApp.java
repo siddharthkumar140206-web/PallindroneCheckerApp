@@ -1,6 +1,4 @@
-// USE CASE 6
-import java.util.Scanner;
-import java.util.Stack;
+//USE CASE 8
 
 import java.util.Scanner;
 import java.util.LinkedList;
